@@ -4,15 +4,6 @@ import Fish from './fish.js';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-const fishLogic = (fish) => {
-
-    document.addEventListener('keyup', event => {
-        if (event.code === 'Space') {
-            console.log('Space pressed')
-        }
-    })
-}
-
 ReactDOM.render(<Fish/>,
     document.getElementById('root')
 );
