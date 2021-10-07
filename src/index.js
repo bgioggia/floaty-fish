@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './playerFish.css';
 import reportWebVitals from './reportWebVitals';
 
 const fish = (
-    <div color='orange'>fish</div>
+    <div id='player_fish'>
+        <div id='player_tail'>
+        </div>
+        <div id='player_body'>
+
+        </div>
+        <div id='player_eye'/>
+    </div>
 );
 
 ReactDOM.render(fish,
