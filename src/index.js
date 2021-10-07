@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Fish from './fish.js';
 import './index.css';
-import './playerFish.css';
 import reportWebVitals from './reportWebVitals';
 
-const fish = (
-    <div id='player_fish'>
-        <div id='player_tail'>
-        </div>
-        <div id='player_body'>
+const fishLogic = (fish) => {
 
-        </div>
-        <div id='player_eye'/>
-    </div>
-);
+    document.addEventListener('keyup', event => {
+        if (event.code === 'Space') {
+            console.log('Space pressed')
+        }
+    })
+}
 
-ReactDOM.render(fish,
+ReactDOM.render(<Fish/>,
     document.getElementById('root')
 );
 
