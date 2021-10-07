@@ -4,18 +4,16 @@ export default class Fish extends React.Component {
 
     constructor(props) {
         super(props);
-        // Don't call this.setState() here!
-        this.state = { yPos: 0 };
+        this.state = {
+            yPos: 0,
+            delta: 10};
     }
 
     onKeyPress = (event) => {
         if (event.keyCode === 32) {  //keycode for spacebar
-            console.log("oh my goodness you have clicked the spacebar")
-            this.setState((state, props) => {
-                return {yPos: state.yPos + 10};
-            });
-            console.log(this.state.yPos);
-        }
+            this.setState((state) => {
+                return {yPos: state.yPos + state.delta};
+            });}
     }
 
     componentDidMount(){
