@@ -1,1 +1,1 @@
-Underwater version of 'Flappy Bird' using React
+Underwater version of 'Flappy Bird' using React.
