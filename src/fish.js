@@ -6,24 +6,41 @@ export default class Fish extends React.Component {
         super(props);
         this.state = {
             yPos: 0,
-            delta: 7};
+            yVelocity: 0,
+            delta: 0.5};
     }
 
     onKeyPress = (event) => {
         if (event.keyCode === 32) {  //keycode for spacebar
             this.setState((state) => {
-                return {yPos: state.yPos + state.delta};
+                return {yVelocity: state.yVelocity + state.delta*20};
+            });
+            if (this.state.yVelocity > 15){ //Keeps the fish relatively bouncy
+                this.setState(() => {
+                    return {yVelocity: 15};
+                });
+            }
+            this.setState((state) => {
+                return {yPos: state.yPos + state.yVelocity};
             });}
     }
 
     tick() {
         this.setState((state) => {
-            return {yPos: state.yPos - state.delta};
+            return {yVelocity: state.yVelocity - state.delta};
+        });
+        if (this.state.yVelocity < -15){ //Keeps the fish relatively bouncy
+            this.setState(() => {
+                return {yVelocity: -15};
+            });
+        }
+        this.setState((state) => {
+            return {yPos: state.yPos + state.yVelocity};
         });
     }
 
     componentDidMount(){
-        this.interval = setInterval(() => this.tick(), 1000);
+        this.interval = setInterval(() => this.tick(), 50);
         document.addEventListener("keydown", this.onKeyPress, false);
     }
     componentWillUnmount(){
