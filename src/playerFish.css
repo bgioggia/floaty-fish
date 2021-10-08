@@ -1,31 +1,33 @@
 #player_fish {
-    width: 250px;
+    width: 150px;
 }
 
 #player_body {
     float:right;
     background-color: orange;
-    width: 150px;
-    height: 75px;
+    width: 75px;
+    height: 37px;
     border-radius: 50%;
-    margin-top: -85px;
+    margin-top: -45px;
 }
 
 #player_tail {
     float:left;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-left: 100px solid orange;
-    border-bottom: 50px solid transparent;
-    margin-left: 70px;
+    border-top: 25px solid transparent;
+    border-left: 50px solid orange;
+    border-bottom: 25px solid transparent;
+    margin-left: 45px;
 }
 
 #player_eye {
+    position: relative;
     background-color: black;
-    float:right;
-    width: 15px;
-    height: 15px;
+    float: right;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    margin-top: -70px;
+    margin-top: 10px;
+    margin-right:10px;
 }

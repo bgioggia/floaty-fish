@@ -57,8 +57,8 @@ export default class Fish extends React.Component {
                  }}>
 
                 <div id='player_tail'/>
-                <div id='player_body'/>
-                <div id='player_eye'/>
+                <div id='player_body'><div id='player_eye'/></div>
+
             </div>
         );
     }
