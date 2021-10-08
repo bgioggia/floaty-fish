@@ -6,7 +6,7 @@ export default class Fish extends React.Component {
         super(props);
         this.state = {
             yPos: 0,
-            delta: 10};
+            delta: 7};
     }
 
     onKeyPress = (event) => {
@@ -16,10 +16,18 @@ export default class Fish extends React.Component {
             });}
     }
 
+    tick() {
+        this.setState((state) => {
+            return {yPos: state.yPos - state.delta};
+        });
+    }
+
     componentDidMount(){
+        this.interval = setInterval(() => this.tick(), 1000);
         document.addEventListener("keydown", this.onKeyPress, false);
     }
     componentWillUnmount(){
+        clearInterval(this.interval);
         document.removeEventListener("keydown", this.onKeyPress, false);
     }
 
