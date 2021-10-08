@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Fish from './fish.js';
+import GameWindow from "./gameWindow";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(<Fish/>,
+ReactDOM.render(<GameWindow/>,
     document.getElementById('root')
 );
 
