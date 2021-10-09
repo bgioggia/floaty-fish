@@ -24,8 +24,14 @@
     border: 5px solid black;
     font-size: 25px;
     font-family: Copperplate, sans-serif;
+    color: white;
 }
 
 #hiddenButton {
 display: none;
+}
+
+#score{
+    float: right;
+    color: white;
 }

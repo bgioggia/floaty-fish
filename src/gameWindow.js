@@ -7,7 +7,7 @@ export default class gameWindow extends React.Component {
     constructor(props) {
         super(props);
         this.fish = React.createRef();
-        this.state = {startMenu: true};
+        this.state = {startMenu: true, score: 0};
         this.startGame = this.startGame.bind(this);
     }
 
@@ -26,13 +26,23 @@ export default class gameWindow extends React.Component {
     startGame() {
         this.fish.current.respawn();
         this.setState(() => {
-            return {startMenu: false};
+            return {startMenu: false, score: 0};
         });
+    }
+
+    // incrementScore() adds 1 to the score every 0.5 seconds if the game is being played.
+    incrementScore() {
+        if(!this.state.startMenu) {
+            this.setState((state) => {
+                return {score: state.score + 10};
+            });
+        }
     }
 
     //mount
     componentDidMount(){
         this.interval = setInterval(() => this.handleFishPosn(), 50);
+        this.interval = setInterval(() => this.incrementScore(), 500);
     }
 
     //unmount
@@ -48,6 +58,7 @@ export default class gameWindow extends React.Component {
                 <Fish ref={this.fish}/>
                 <button id={startMenu ? "startButton" : "hiddenButton"}
                         onClick={startMenu ? this.startGame : null}>{startMenu ? "Start New Game!" : null}</button>
+                <h1 id={startMenu ? null : "score"}>{startMenu ? null : this.state.score}</h1>
             </div>
         );
     }

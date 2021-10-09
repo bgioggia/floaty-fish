@@ -100,7 +100,6 @@ export default class Fish extends React.Component {
                 <div id={alive ? 'player_body' : null}>
                     <div id={alive ? 'player_eye' : null}/>
                 </div>
-
             </div>
         );
     }
