@@ -7,7 +7,7 @@ export default class gameWindow extends React.Component {
     constructor(props) {
         super(props);
         this.fish = React.createRef();
-        this.state = {startMenu: true, score: 0};
+        this.state = {startMenu: true, score: 0, hiScore: 0};
         this.startGame = this.startGame.bind(this);
     }
 
@@ -34,7 +34,12 @@ export default class gameWindow extends React.Component {
     incrementScore() {
         if(!this.state.startMenu) {
             this.setState((state) => {
-                return {score: state.score + 10};
+                if (state.score === state.hiScore) {
+                    return {score: state.score + 10, hiScore: state.hiScore + 10};
+                }
+                else {
+                    return {score: state.score + 10};
+                }
             });
         }
     }
@@ -58,7 +63,11 @@ export default class gameWindow extends React.Component {
                 <Fish ref={this.fish}/>
                 <button id={startMenu ? "startButton" : "hiddenButton"}
                         onClick={startMenu ? this.startGame : null}>{startMenu ? "Start New Game!" : null}</button>
-                <h1 id={startMenu ? null : "score"}>{startMenu ? null : this.state.score}</h1>
+                <div id={startMenu ? null : "scoreContainer"}>
+                    <h3 id={startMenu ? null : "score"}>{startMenu ? null : "High Score: " + this.state.hiScore}</h3>
+                    <div id={startMenu ? null : "scoreSpacer"}/>
+                    <h2 id={startMenu ? null : "score"}>{startMenu ? null : "Current Score: " + this.state.score}</h2>
+                </div>
             </div>
         );
     }

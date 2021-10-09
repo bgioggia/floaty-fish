@@ -28,10 +28,20 @@
 }
 
 #hiddenButton {
-display: none;
+    display: none;
+}
+
+#scoreContainer {
+    position: relative;
 }
 
 #score{
     float: right;
     color: white;
+    position: absolute;
+    right: 0;
+}
+
+#scoreSpacer {
+    height: 20px;
 }
