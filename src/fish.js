@@ -9,7 +9,8 @@ export default class Fish extends React.Component {
             yPos: 500,
             yVelocity: 0,
             delta: 0.5,
-            alive: true};
+            alive: false
+        };
     }
 
     // Handles fish interactions with keyboard button presses
