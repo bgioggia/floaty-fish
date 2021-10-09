@@ -31,11 +31,6 @@ export default class Fish extends React.Component {
                     return {yPos: state.yPos + state.yVelocity};
                 });}
         }
-        else {
-            if (event.keyCode === 32) {  //keycode for spacebar
-                this.respawn();
-            }
-        }
     }
 
     // tick function handles runs every .05 seconds
