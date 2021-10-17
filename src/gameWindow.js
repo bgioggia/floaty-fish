@@ -64,8 +64,6 @@ export default class gameWindow extends React.Component {
         const startMenu = this.state.startMenu;
         return (
             <div id="GameWindow">
-                <Fish ref={this.fish}/>
-                <Seaweed ref={this.seaweed}/>
                 <button id={startMenu ? "startButton" : "hiddenButton"}
                         onClick={startMenu ? this.startGame : null}>{startMenu ? "Start New Game!" : null}</button>
                 <div id={startMenu ? null : "scoreContainer"}>
@@ -73,6 +71,8 @@ export default class gameWindow extends React.Component {
                     <div id={startMenu ? null : "scoreSpacer"}/>
                     <h2 id={startMenu ? null : "score"}>{startMenu ? null : "Current Score: " + this.state.score}</h2>
                 </div>
+                <Fish ref={this.fish}/>
+                <Seaweed ref={this.seaweed}/>
             </div>
         );
     }

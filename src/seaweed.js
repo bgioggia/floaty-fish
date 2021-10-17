@@ -28,12 +28,12 @@ export default class Seaweed extends React.Component {
         const gameStarted = this.state.gameStarted;
 
         return (
-            <div id={gameStarted ? "window" : null}
-                 style={gameStarted ? {
-                position: "absolute",
-               marginTop: `${windowHeight}px`,
-            } : null}/>
-
+            <div id={gameStarted ? "pillar" : null}>
+                <div id={gameStarted ? "window" : null}
+                     style={gameStarted ? {
+                         position: "absolute",
+                         marginTop: `${windowHeight}px`,} : null}/>
+            </div>
         );
     }
 
