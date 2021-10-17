@@ -1,5 +1,6 @@
 #player_fish {
     width: 150px;
+    z-index: 10;
 }
 
 #player_body {
