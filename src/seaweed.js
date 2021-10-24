@@ -11,9 +11,11 @@ export default class Seaweed extends React.Component {
 
     // Moves the seaweed to the left every tick.
     tick() {
-        this.setState((state) => {
-            return {xPos: state.xPos - state.delta};
-        });
+        if (this.state.gameStarted) {
+            this.setState((state) => {
+                return {xPos: state.xPos - state.delta};
+            });
+        }
     }
 
     // Sets interval for moving seaweed to the left
@@ -26,6 +28,8 @@ export default class Seaweed extends React.Component {
         clearInterval(this.interval);
     }
 
+
+
     //updates the class to inform that the game has started.
     startGame() {
         this.setState(() => {
@@ -36,7 +40,7 @@ export default class Seaweed extends React.Component {
     //updates the class to inform that the game has ended.
     endGame() {
         this.setState(() => {
-            return {gameStarted: false}
+            return {gameStarted: false, xPos: 920}
         })
     }
 
