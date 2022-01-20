@@ -1,7 +1,7 @@
 import React from 'react';
 import Fish from './fish.js';
 import './gameWindow.css'
-import Seaweed from "./seaweed";
+import SeaweedList from "./seaweedList";
 export default class gameWindow extends React.Component {
 
     // constructor for gameWindow
@@ -9,6 +9,7 @@ export default class gameWindow extends React.Component {
         super(props);
         this.fish = React.createRef();
         this.seaweed = React.createRef();
+        this.seaweedList = React.createRef();
         this.state = {startMenu: true, score: 0, hiScore: 0};
         this.startGame = this.startGame.bind(this);
     }
@@ -72,7 +73,7 @@ export default class gameWindow extends React.Component {
                     <h2 id={startMenu ? null : "score"}>{startMenu ? null : "Current Score: " + this.state.score}</h2>
                 </div>
                 <Fish ref={this.fish}/>
-                <Seaweed ref={this.seaweed}/>
+                <SeaweedList ref={this.seaweedList}/>
             </div>
         );
     }

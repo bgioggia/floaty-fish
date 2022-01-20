@@ -59,5 +59,4 @@ export default class Seaweed extends React.Component {
             </div>
         );
     }
-
 }
