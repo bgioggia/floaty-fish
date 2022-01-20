@@ -27,6 +27,14 @@ export default class gameWindow extends React.Component {
                 return {startMenu: true};
             });
         }
+        if(this.seaweed1.current.state.xPos < 146
+            && Math.abs(this.seaweed1.current.state.windowHeight - this.fish.current.state.yPos) > 40){
+            this.fish.current.die();
+            this.seaweed1.current.endGame();
+            this.setState(() => {
+                return {startMenu: true};
+            });
+        }
     }
 
     // startGame disables the menu, and adds the fish to the screen.
@@ -77,6 +85,7 @@ export default class gameWindow extends React.Component {
                 </div>
                 <Fish ref={this.fish}/>
                 <Seaweed ref={this.seaweed1}/>
+                <Seaweed ref={this.seaweed2}/>
             </div>
         );
     }
