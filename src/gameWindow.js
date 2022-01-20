@@ -8,7 +8,11 @@ export default class gameWindow extends React.Component {
     constructor(props) {
         super(props);
         this.fish = React.createRef();
-        this.seaweed = React.createRef();
+        this.seaweed1 = React.createRef();
+        this.seaweed2 = React.createRef();
+        this.seaweed3 = React.createRef();
+        this.seaweed4 = React.createRef();
+        this.seaweed5 = React.createRef();
         this.state = {startMenu: true, score: 0, hiScore: 0};
         this.startGame = this.startGame.bind(this);
     }
@@ -18,7 +22,7 @@ export default class gameWindow extends React.Component {
     handleFishPosn(){
         if(this.fish.current.state.yPos < -20 || this.fish.current.state.yPos > 623) {
             this.fish.current.die();
-            this.seaweed.current.endGame();
+            this.seaweed1.current.endGame();
             this.setState(() => {
                 return {startMenu: true};
             });
@@ -28,7 +32,7 @@ export default class gameWindow extends React.Component {
     // startGame disables the menu, and adds the fish to the screen.
     startGame() {
         this.fish.current.respawn();
-        this.seaweed.current.startGame();
+        this.seaweed1.current.startGame();
         this.setState(() => {
             return {startMenu: false, score: 0};
         });
@@ -72,7 +76,7 @@ export default class gameWindow extends React.Component {
                     <h2 id={startMenu ? null : "score"}>{startMenu ? null : "Current Score: " + this.state.score}</h2>
                 </div>
                 <Fish ref={this.fish}/>
-                <Seaweed ref={this.seaweed}/>
+                <Seaweed ref={this.seaweed1}/>
             </div>
         );
     }

@@ -9,12 +9,20 @@ export default class Seaweed extends React.Component {
         this.gameStarted = false;
     }
 
-    // Moves the seaweed to the left every tick.
+
     tick() {
         if (this.state.gameStarted) {
-            this.setState((state) => {
-                return {xPos: state.xPos - state.delta};
-            });
+            if (this.state.xPos < 10) { //Returns the seaweed to starting position
+                this.setState(() => {
+                    return {xPos: 920};
+                });
+            }
+            else{ // Moves the seaweed to the left every tick.
+                this.setState((state) => {
+                    return {xPos: state.xPos - state.delta};
+                });
+            }
+
         }
     }
 
