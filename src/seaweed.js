@@ -5,7 +5,7 @@ export default class Seaweed extends React.Component {
     // constructor for gameWindow
     constructor(props) {
         super(props);
-        this.state = {windowHeight: (Math.floor(Math.random() * 475) + 25), xPos: 920, delta: 10};
+        this.state = {windowHeight: (Math.floor(Math.random() * 475) + 25), xPos: 920, delta: 9};
         this.gameStarted = false;
     }
 

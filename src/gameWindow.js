@@ -10,19 +10,18 @@ export default class gameWindow extends React.Component {
         this.fish = React.createRef();
         this.seaweed1 = React.createRef();
         this.seaweed2 = React.createRef();
-        this.seaweed3 = React.createRef();
-        this.seaweed4 = React.createRef();
-        this.seaweed5 = React.createRef();
         this.state = {startMenu: true, score: 0, hiScore: 0};
         this.startGame = this.startGame.bind(this);
     }
 
     // handleFishPosn updates the gameState
     // - kills the fish if it touches a border of the gameWindow
+    // - kills the fish if it touches seaweed
     handleFishPosn(){
         if(this.fish.current.state.yPos < -20 || this.fish.current.state.yPos > 623) {
             this.fish.current.die();
             this.seaweed1.current.endGame();
+            this.seaweed2.current.endGame();
             this.setState(() => {
                 return {startMenu: true};
             });
@@ -31,6 +30,16 @@ export default class gameWindow extends React.Component {
             && Math.abs(this.seaweed1.current.state.windowHeight - this.fish.current.state.yPos) > 40){
             this.fish.current.die();
             this.seaweed1.current.endGame();
+            this.seaweed2.current.endGame();
+            this.setState(() => {
+                return {startMenu: true};
+            });
+        }
+        if(this.seaweed2.current.state.xPos < 146
+            && Math.abs(this.seaweed2.current.state.windowHeight - this.fish.current.state.yPos) > 40){
+            this.fish.current.die();
+            this.seaweed1.current.endGame();
+            this.seaweed2.current.endGame();
             this.setState(() => {
                 return {startMenu: true};
             });
@@ -50,6 +59,9 @@ export default class gameWindow extends React.Component {
     incrementScore() {
         if(!this.state.startMenu) {
             this.setState((state) => {
+                if (state.score === 150) {
+                    this.seaweed2.current.startGame();
+                }
                 if (state.score === state.hiScore) {
                     return {score: state.score + 10, hiScore: state.hiScore + 10};
                 }
@@ -84,8 +96,12 @@ export default class gameWindow extends React.Component {
                     <h2 id={startMenu ? null : "score"}>{startMenu ? null : "Current Score: " + this.state.score}</h2>
                 </div>
                 <Fish ref={this.fish}/>
-                <Seaweed ref={this.seaweed1}/>
-                <Seaweed ref={this.seaweed2}/>
+                <div>
+                    <Seaweed ref={this.seaweed1}/>
+                </div>
+                <div>
+                    <Seaweed ref={this.seaweed2}/>
+                </div>
             </div>
         );
     }
