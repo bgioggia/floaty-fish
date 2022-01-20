@@ -14,7 +14,7 @@ export default class Seaweed extends React.Component {
         if (this.state.gameStarted) {
             if (this.state.xPos < 10) { //Returns the seaweed to starting position
                 this.setState(() => {
-                    return {xPos: 920};
+                    return {windowHeight: (Math.floor(Math.random() * 475) + 25), xPos: 920};
                 });
             }
             else{ // Moves the seaweed to the left every tick.
